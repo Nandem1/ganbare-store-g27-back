@@ -39,6 +39,8 @@ CREATE TABLE categories (
   categorydescription TEXT
 );
 
+INSERT INTO categories (categoryname, categorydescription) VALUES ('Consolas', 'Consolas de Videojuegos');
+
 CREATE TABLE products (
   product_id BIGSERIAL PRIMARY KEY,
   category_id INT NOT NULL,
@@ -50,6 +52,8 @@ CREATE TABLE products (
   image VARCHAR(255),
   FOREIGN KEY (category_id) REFERENCES categories(category_id)
 );
+
+INSERT INTO products (category_id, productname, price, stock, garantia, description, image) VALUES (1, 'Nintendo Switch', 10000, 10, '1 año', 'Gran consola Nintendo Switch V2 Neon para jugar Animal Crossing sisisi', 'https://http2.mlstatic.com/D_NQ_NP_803086-MLA47920649105_102021-O.webp');
 
 CREATE TABLE userCart (
   cart_id SERIAL PRIMARY KEY,
@@ -98,7 +102,7 @@ VALUES
 
 -- Script para las ciudades con su region
 INSERT INTO cities
-  (name,id_region)
+  (cityName, region_id)
 VALUES
 	('Arica',1),
 	('Camarones',1),
