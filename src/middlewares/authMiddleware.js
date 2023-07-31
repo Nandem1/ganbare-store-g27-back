@@ -23,7 +23,10 @@ const checkDuplicateUsername = async(req, res, next) => {
   const { userEmail } = req.body;
   try{
     const response = await User.getUserByEmail(userEmail);
-    if(response.useremail){
+    console.log(response);
+    console.log(response.userEmail);
+    console.log(response.useremail);
+    if(response.length > 0){
         return res.status(400).send({ message: "El correo electrónico ya está registrado." });
       }
       next();

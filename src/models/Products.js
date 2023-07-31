@@ -79,4 +79,5 @@ const updateProductById = async (product) => {
 module.exports = {
   getProducts,
   createProduct,
+  getProductById
 };
