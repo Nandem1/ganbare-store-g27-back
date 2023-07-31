@@ -18,7 +18,7 @@ const loginUser = async (req, res) => {
     const { userEmail, password } = req.body;
     console.log(userEmail, password);
     try {
-
+        
         const user = await User.getUserByEmail(userEmail);
         const response = await bcrypt.compare(password, user[0].password);
 
@@ -35,13 +35,19 @@ const loginUser = async (req, res) => {
         res.status(500).json({ message: 'Error al iniciar sesión.' });
     }
 }
+const getUsers = async (req, res) => {
+    try {
+        const users = await User.getUsers();
+        res.status(200).json(users);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Error al obtener los usuarios.' });
+    }
+}
 
 
 module.exports = {
     registerUser,
-    loginUser
+    loginUser,
+    getUsers
 };
-// exports.getUsers = async (req, res) => {
-    // res.json({ data: 'hola mundo' });
-// };
-//

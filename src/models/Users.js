@@ -22,8 +22,17 @@ const getUserByEmail = async(credentials) => {
     throw new Error(error);
   }
 }
-
+const getUsers = async () => {
+  const query = 'SELECT * FROM users';
+  try {
+    const response = await pool.query(query);
+    return response.rows;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
 module.exports ={
   createUser,
-  getUserByEmail
+  getUserByEmail,
+  getUsers
 };
