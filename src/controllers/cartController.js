@@ -2,10 +2,8 @@ const Cart= require ('../models/UserCart');
 
 const getCart = async(req, res) => {
     const {userId} = req.params;
-    console.log(userId);
     try {
         const cart = await Cart.getCartByUserId(userId);
-        console.log(cart);
         if ( cart.length === 0) {res.status(204).json({message: "El usuario no tiene carrito asociado"})}
         else{res.status(201).json(cart)};
     } catch (error) {
