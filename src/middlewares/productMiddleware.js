@@ -16,7 +16,9 @@ const verifyJwtMiddleware = (req, res, next) => {
         .json({ message: "Token de autenticación inválido." });
     }
 
-    if (decoded.role !== "administrador") {
+    if (decoded.userRol !== 1) {
+      console.log("el decoded role: ", decoded);
+      console.log("el cuerpo del req",params)
       return res.status(403).json({
         message:
           "Acceso denegado. Solo los administradores pueden crear productos.",

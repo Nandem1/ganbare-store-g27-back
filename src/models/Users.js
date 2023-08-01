@@ -28,7 +28,9 @@ const getUsers = async () => {
     const response = await pool.query(query);
     return response.rows;
   } catch (error) {
-    throw new Error(error);
+    console.log("entre al error");
+    console.log(error);
+    throw error;
   }
 }
 module.exports ={
