@@ -7,6 +7,7 @@ const userRoutes = require("./src/routes/userRoutes");
 const productRoutes = require("./src/routes/productRoutes");
 const cartRoutes = require('./src/routes/cartRoutes');
 const favRoutes = require('./src/routes/favRoutes');
+const citiesRoutes = require('./src/routes/citiesRoutes')
 const { loggingMiddleware, errorHandlerMiddleware } = require("./src/middlewares/statusMiddleware.js");
 const compression = require("compression");
 
@@ -27,6 +28,8 @@ app.use("/products", productRoutes);
 app.use("/cart", cartRoutes);
 //Disponibilizar rutas de favoritos
 app.use("/fav", favRoutes);
+//Disponibilizar rutas de ciudades
+app.use('/city', citiesRoutes)
 app.listen(port, () =>
   console.log("\x1b[36m", `Server listening on http://localhost:${port}!`)
 );

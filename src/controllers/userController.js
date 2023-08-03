@@ -8,8 +8,10 @@ require('dotenv').config();
 const registerUser = async (req, res) => {
     try {
         const newUser = await User.createUser(req.body);
+        console.log("usuario nuevo backend: ", newUser)
         res.status(201).json(newUser);
     } catch (error) {
+        console.error(error)
         res.status(500).json({ message: 'Error al registrar el usuario.' });
     }
 }

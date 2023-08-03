@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">84.61% </span>
+                <span class="strong">61.53% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>22/26</span>
+                <span class='fraction'>16/26</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>2/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">84.61% </span>
+                <span class="strong">61.53% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>22/26</span>
+                <span class='fraction'>16/26</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -123,9 +123,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -136,28 +136,28 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -174,10 +174,10 @@ require('dotenv').config();
 &nbsp;
 &nbsp;
 &nbsp;
-const registerUser = async (req, res) =&gt; {
-    try {
-        const newUser = await User.createUser(req.body);
-        res.status(201).json(newUser);
+const registerUser = <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
+<span class="cstat-no" title="statement not covered" >    try {</span>
+        const newUser = <span class="cstat-no" title="statement not covered" >await User.createUser(req.body);</span>
+<span class="cstat-no" title="statement not covered" >        res.status(201).json(newUser);</span>
     } catch (error) {
 <span class="cstat-no" title="statement not covered" >        res.status(500).json({ message: 'Error al registrar el usuario.' });</span>
     }
@@ -188,28 +188,28 @@ const loginUser = async (req, res) =&gt; {
     try {
 &nbsp;
         const user = await User.getUserByEmail(userEmail);
-        const response = await bcrypt.compare(password, user[0].password);
+        const response = <span class="cstat-no" title="statement not covered" >await bcrypt.compare(password, user[0].password);</span>
 &nbsp;
-        if (!user || !(response)) {
-            return res.status(401).json({ message: 'Credenciales inválidas.' });
+<span class="cstat-no" title="statement not covered" >        if (!user || !(response)) {</span>
+<span class="cstat-no" title="statement not covered" >            return res.status(401).json({ message: 'Credenciales inválidas.' });</span>
         }
 &nbsp;
-        const token = jwt.sign({ userId: user[0].user_id, userRol: user[0].profile_id}, process.env.JWT_SECRET, {
+        const token = <span class="cstat-no" title="statement not covered" >jwt.sign({ userId: user[0].user_id, userRol: user[0].profile_id}, process.env.JWT_SECRET, {</span>
             expiresIn: '1h'
         });
 &nbsp;
-        res.json({ token });
+<span class="cstat-no" title="statement not covered" >        res.json({ token });</span>
     } catch (error) {
-<span class="cstat-no" title="statement not covered" >        res.status(500).json({ message: 'Error al iniciar sesión.' });</span>
+        res.status(500).json({ message: 'Error al iniciar sesión.' });
     }
 }
 const getUsers = async (req, res) =&gt; {
     try {
         const users = await User.getUsers();
-        res.status(200).json(users);
+<span class="cstat-no" title="statement not covered" >        res.status(200).json(users);</span>
     } catch (error) {
-<span class="cstat-no" title="statement not covered" >        console.log(error);</span>
-<span class="cstat-no" title="statement not covered" >        res.status(500).json({ message: 'Error al obtener los usuarios.' });</span>
+        console.log(error);
+        res.status(500).json({ message: 'Error al obtener los usuarios.' });
     }
 }
 &nbsp;
@@ -226,7 +226,7 @@ module.exports = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-08-01T04:19:12.600Z
+                at 2023-08-02T22:34:23.558Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
