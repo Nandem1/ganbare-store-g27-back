@@ -1,4 +1,5 @@
 const User = require("../models/Users");
+const City = require("../models/City");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
@@ -25,12 +26,14 @@ const loginUser = async (req, res) => {
       return res.status(401).json({ message: "Credenciales inválidas." });
     }
 
+    const city = await City.getCityById(user[0].city_id);
+    console.log(city);
     const token = jwt.sign(
       { userId: user[0].user_id,
         userRol: user[0].profile_id,
         userEmail: user[0].useremail,
         userAddress: user[0].useraddress,
-        userCity: user[0].city_id,
+        userCity: city[0].cityname,
         userRut: user[0].userrut,
         userPhone: user[0].userphone
        },
