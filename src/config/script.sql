@@ -83,7 +83,7 @@ VALUES
   ('Región de Coquimbo'),
   ('Región de Valparaíso'),
   ('Región Metropolitana de Santiago'),
-  ("Región del Libertador General Bernardo O'Higgins"),
+  ('Región del Libertador General Bernardo O"Higgins'),
   ('Región del Maule'),
   ('Región de Ñuble'),
   ('Región del Biobío'),
@@ -98,7 +98,7 @@ INSERT INTO profiles
 (profilename, profiledescription)
 VALUES
 ('administrador', 'Usuario administrador que puede publicar, editar y eliminar productos de la tienda'),
-('comprador', 'Usuario habilitado para realizar compras en la tienda')
+('comprador', 'Usuario habilitado para realizar compras en la tienda');
 
 -- Script para las ciudades con su region
 INSERT INTO cities
