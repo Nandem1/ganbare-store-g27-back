@@ -91,7 +91,8 @@ const getUsers = async (req, res) => {
 };
 const updateUser = async (req, res) => {
   const userId = req.params.id;
-  const { userAddress, password, profile_id, city_id, userRut, userPhone } = req.body;
+  console.log('userId', userId);
+  const { userAddress, password, profile_id, city_id, userRut, userPhone, userEmail } = req.body;
 
   try {
     // Verificar si el usuario existe
