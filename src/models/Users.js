@@ -52,7 +52,9 @@ const getUsers = async () => {
 };
 const getUserById = async (id) => {
   try {
-    const response = await pool.query("SELECT * FROM users WHERE id = $1", [
+    console.log('getUserById id', id);
+
+    const response = await pool.query("SELECT * FROM users WHERE user_id = $1", [
       id,
     ]);
     return response.rows;
@@ -63,6 +65,8 @@ const getUserById = async (id) => {
 
 const updateUser = async (id, user) => {
   try {
+    console.log('update user id', id);
+
     const {
       userEmail,
       userAddress,
@@ -80,7 +84,7 @@ const updateUser = async (id, user) => {
     const updateQuery = `
       UPDATE users 
       SET useraddress = $1, password = $2, profile_id = $3, city_id = $4, userrut = $5, userphone = $6, useremail = $7
-      WHERE id = $8
+      WHERE user_id = $8
       RETURNING * `;
     
     const updateResponse = await pool.query(updateQuery, [
@@ -91,7 +95,7 @@ const updateUser = async (id, user) => {
       userRut,
       userPhone,
       userEmail,
-      userId,
+      id,
     ]);
     
     console.log('updateResponse', updateResponse);

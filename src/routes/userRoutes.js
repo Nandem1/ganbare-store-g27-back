@@ -10,5 +10,5 @@ router.post('/decodeToken', userController.decodeToken);
 router.get('/protected', authMiddleware.authMiddleware, (req, res) => {
   res.json({ message: 'Ruta protegida, acceso permitido.' });
 });
-router.put('/users/:id', userController.updateUser);
+router.put('/:id',authMiddleware.authMiddleware, userController.updateUser);
 module.exports = router;
