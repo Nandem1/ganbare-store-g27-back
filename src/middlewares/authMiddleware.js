@@ -2,13 +2,15 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/Users');
 
 const authMiddleware = (req, res, next) => {
-  const token = req.header('Authorization');
+  //const token = req.header('Authorization');
+  const token2 = req.headers.authorization.split(' ')[1];
+  //console.log(token2)
 
-  if (!token) {
+  if (!token2) {
     return res.status(401).json({ message: 'Token no proporcionado.' });
   }
 
-  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+  jwt.verify(token2, process.env.JWT_SECRET, (err, decoded) => {
     if (err) {
       return res.status(401).json({ message: 'Token inválido.' });
     }

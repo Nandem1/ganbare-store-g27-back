@@ -19,6 +19,7 @@ const deleteFav = async(req, res) => {
         await Fav.removeFav(userId, productId);
         res.status(200).json({message: "producto eliminado satisfactoriamente de favoritos"})
     } catch (error) {
+        console.error(error)
         res.status(500).json({message: "error interno del servidor al tratar de eliminar producto de favoritos"})
     }
 };
@@ -30,6 +31,7 @@ const getFavsByUser = async(req, res) => {
         if (favsByUser){ res.status(200).json(favsByUser)}
         else{res.status(204).json({message: "El usuario no tiene favoritos"})}
     } catch (error) {
+        console.error(error)
         res.status(500).json({message: "Error interno del servidor al tratar de obtener los favoritos"})
     }
 }
