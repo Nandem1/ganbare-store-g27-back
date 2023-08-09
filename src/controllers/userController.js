@@ -89,10 +89,38 @@ const getUsers = async (req, res) => {
     res.status(500).json({ message: "Error al obtener los usuarios." });
   }
 };
+const updateUser = async (req, res) => {
+  const userId = req.params.id;
+  const { userAddress, password, profile_id, city_id, userRut, userPhone } = req.body;
 
+  try {
+    // Verificar si el usuario existe
+    const user = await User.getUserById(userId);
+
+    if (!user || user.length === 0) {
+      return res.status(404).json({ error: 'Usuario no encontrado' });
+    }
+    // Actualizar la información del usuario
+    const updatedUser = await User.updateUser(userId, {
+      userAddress,
+      password,
+      profile_id,
+      city_id,
+      userRut,
+      userPhone, 
+      userEmail
+    });
+
+    res.json(updatedUser);
+  } catch (error) {
+    console.error('Error al editar usuario:', error);
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
+};
 module.exports = {
   registerUser,
   loginUser,
   getUsers,
-  decodeToken
+  decodeToken,
+  updateUser
 };
