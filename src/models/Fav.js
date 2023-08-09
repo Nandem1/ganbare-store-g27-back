@@ -11,13 +11,19 @@ const addFav = async (userId, productId) => {
 }
 
 const getFavsByUserId = async (userId) => {
-  const query = 'SELECT * FROM fav WHERE user_id = $1';
-    try {
-        const response = await pool.query(query, [userId]);
-        return response.rows;
-    } catch (error) {
-        throw new Error(error);
-    }
+    const query = `
+    SELECT p.*
+    FROM fav AS f
+    JOIN products AS p ON f.product_id = p.id
+    WHERE f.user_id = $1;
+  `;
+
+  try {
+    const response = await pool.query(query, [userId]);
+    return response.rows;
+  } catch (error) {
+    throw new Error(error);
+  }
 }
 
 const removeFav = async (userId, productId) => {
