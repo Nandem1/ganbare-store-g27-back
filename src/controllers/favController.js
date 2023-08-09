@@ -23,19 +23,19 @@ const deleteFav = async(req, res) => {
     }
 };
 
-const getAllFav = async (req, res) => {
+const getFavsByUser = async(req, res) => {
     const { userId } = req.params;
     try {
-        const allFavs = await Fav.getFavsByUserId(userId);
-        if (allFavs){ res.status(200).json(allFavs)}
+        const favsByUser = await Fav.getFavsByUserId(userId);
+        if (favsByUser){ res.status(200).json(favsByUser)}
         else{res.status(204).json({message: "El usuario no tiene favoritos"})}
     } catch (error) {
         res.status(500).json({message: "Error interno del servidor al tratar de obtener los favoritos"})
     }
-};
+}
 
 module.exports = {
     addFav,
     deleteFav,
-    getAllFav
+    getFavsByUser
 }
