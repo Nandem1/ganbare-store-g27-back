@@ -1,4 +1,5 @@
 const User = require("../models/Users");
+const City = require("../models/City");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
@@ -25,12 +26,14 @@ const loginUser = async (req, res) => {
       return res.status(401).json({ message: "Credenciales inválidas." });
     }
 
+    const city = await City.getCityById(user[0].city_id);
+    console.log(city);
     const token = jwt.sign(
       { userId: user[0].user_id,
         userRol: user[0].profile_id,
         userEmail: user[0].useremail,
         userAddress: user[0].useraddress,
-        userCity: user[0].city_id,
+        userCity: city[0].cityname,
         userRut: user[0].userrut,
         userPhone: user[0].userphone
        },
@@ -86,10 +89,39 @@ const getUsers = async (req, res) => {
     res.status(500).json({ message: "Error al obtener los usuarios." });
   }
 };
+const updateUser = async (req, res) => {
+  const userId = req.params.id;
+  console.log('userId', userId);
+  const { userAddress, password, profile_id, city_id, userRut, userPhone, userEmail } = req.body;
 
+  try {
+    // Verificar si el usuario existe
+    const user = await User.getUserById(userId);
+
+    if (!user || user.length === 0) {
+      return res.status(404).json({ error: 'Usuario no encontrado' });
+    }
+    // Actualizar la información del usuario
+    const updatedUser = await User.updateUser(userId, {
+      userAddress,
+      password,
+      profile_id,
+      city_id,
+      userRut,
+      userPhone, 
+      userEmail
+    });
+
+    res.json(updatedUser);
+  } catch (error) {
+    console.error('Error al editar usuario:', error);
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
+};
 module.exports = {
   registerUser,
   loginUser,
   getUsers,
-  decodeToken
+  decodeToken,
+  updateUser
 };

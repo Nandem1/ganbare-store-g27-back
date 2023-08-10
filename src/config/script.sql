@@ -39,7 +39,12 @@ CREATE TABLE categories (
   categorydescription TEXT
 );
 
-INSERT INTO categories (categoryname, categorydescription) VALUES ('Consolas', 'Consolas de Videojuegos');
+INSERT INTO categories (categoryname, categorydescription) VALUES 
+('Consolas', 'Consolas de Videojuegos'),
+('Videojuegos', 'Videojuegos para Consolas'),
+('Figuras', 'Figuras de Anime de tu personaje favorito'),
+('Ropa', 'Ropa de Anime'),
+('Mangas', 'Mangas de tu Anime favorito');
 
 CREATE TABLE products (
   product_id BIGSERIAL PRIMARY KEY,

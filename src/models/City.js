@@ -9,6 +9,17 @@ const getCities = async () => {
   }
 };
 
+const getCityById = async(id) => {
+  const query = "SELECT cityname FROM cities WHERE city_id = $1";
+  try {
+    const response = await pool.query(query, [id]);
+    return response.rows;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
 module.exports = {
-  getCities
+  getCities,
+  getCityById
 }
